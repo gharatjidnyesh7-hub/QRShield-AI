@@ -43,6 +43,9 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "Models", "model.pkl"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 app = Flask(__name__)
+@app.route("/")
+def home():
+    return "QRShield-AI API is running successfully!"
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8 MB upload cap
 
 _model = None
