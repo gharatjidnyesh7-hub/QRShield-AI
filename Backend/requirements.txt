@@ -18,3 +18,4 @@ xgboost==2.0.3
 # Optional: if you'd rather use flask_cors instead of the manual CORS
 # headers already implemented in app.py.
 # flask_cors==4.0.0
+gunicorn
