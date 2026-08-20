@@ -1,0 +1,20 @@
+# QRShield AI - Backend Requirements
+# Install with: pip install -r requirements.txt
+
+Flask==3.1.3
+opencv-python-headless==4.13.0.92
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+joblib==1.5.3
+Pillow==12.1.1
+
+# Optional but recommended: install real XGBoost for the best-performing
+# gradient boosting model (the training script falls back to scikit-learn's
+# GradientBoostingClassifier automatically if this isn't installed).
+xgboost==2.0.3
+
+# Optional: if you'd rather use flask_cors instead of the manual CORS
+# headers already implemented in app.py.
+# flask_cors==4.0.0

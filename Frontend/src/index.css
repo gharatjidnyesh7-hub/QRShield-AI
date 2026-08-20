@@ -1,0 +1,338 @@
+/* ============================================================
+   QRShield AI — Design Tokens
+   Palette: graphite-navy base, signature "shield teal" accent
+   (not the generic neon-green hacker cliché), amber for caution,
+   coral-red for danger. Display face Space Grotesk (geometric,
+   technical), body Inter, data/URLs in JetBrains Mono.
+   Signature element: the "Shield Ring" radial gauge, reused for
+   every risk score across the app so it becomes the app's motif.
+   ============================================================ */
+
+:root {
+  --bg: #0A0E13;
+  --bg-panel: #10161D;
+  --bg-panel-raised: #161E27;
+  --border: #212B36;
+  --border-soft: #1A222C;
+  --text: #E8EDF3;
+  --text-muted: #7C8A9A;
+  --text-faint: #4C5866;
+
+  --shield: #1FE6B5;
+  --shield-dim: #12836A;
+  --shield-glow: rgba(31, 230, 181, 0.18);
+
+  --warning: #FFB648;
+  --warning-glow: rgba(255, 182, 72, 0.16);
+
+  --danger: #FF5468;
+  --danger-glow: rgba(255, 84, 104, 0.18);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(31,230,181,0.06), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(31,230,181,0.04), transparent 35%);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; color: var(--text-muted); line-height: 1.6; }
+
+code, .mono { font-family: var(--font-mono); }
+
+a { color: var(--shield); text-decoration: none; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+::selection { background: var(--shield-glow); color: var(--text); }
+
+/* Layout shell */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 14, 19, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.navbar-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.brand-mark {
+  width: 30px; height: 30px;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover { color: var(--text); background: var(--bg-panel-raised); }
+.nav-link.active { color: var(--shield); background: var(--shield-glow); }
+
+/* Cards / panels */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.panel-tight { padding: 20px; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--shield);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--shield);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--shield);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--shield);
+  color: #04120D;
+}
+.btn-primary:hover { background: #3EF0C6; box-shadow: 0 0 24px var(--shield-glow); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--shield-dim); color: var(--shield); }
+
+/* Inputs */
+.input, textarea.input {
+  width: 100%;
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.input:focus { border-color: var(--shield-dim); }
+.input::placeholder { color: var(--text-faint); font-family: var(--font-body); }
+
+/* Scan-line signature motif (hero + upload dropzones) */
+.scan-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--shield), transparent);
+  box-shadow: 0 0 12px var(--shield);
+  animation: scan-sweep 2.8s ease-in-out infinite;
+}
+
+@keyframes scan-sweep {
+  0% { top: 6%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 94%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-line { animation: none; }
+}
+
+/* Shield Ring gauge - the app's signature recurring element */
+.shield-ring-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shield-ring-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shield-ring-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.shield-ring-unit {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--font-mono);
+}
+
+.badge-safe { background: var(--shield-glow); color: var(--shield); }
+.badge-suspicious { background: var(--warning-glow); color: var(--warning); }
+.badge-phishing { background: var(--danger-glow); color: var(--danger); }
+
+/* Grid utilities */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+@media (max-width: 760px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .navbar-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+/* Tables */
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 12px 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-soft);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.data-table tr:hover td { background: var(--bg-panel-raised); }
+
+/* Focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--shield);
+  outline-offset: 2px;
+}
+
+.footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 28px 24px;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+}
