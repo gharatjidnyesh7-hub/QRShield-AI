@@ -1,0 +1,66 @@
+{
+  "best_model": "RandomForest",
+  "feature_order": [
+    "url_length",
+    "domain_length",
+    "has_https",
+    "count_dots",
+    "count_digits",
+    "count_hyphens",
+    "count_special_chars",
+    "subdomain_count",
+    "has_ip",
+    "is_shortened",
+    "suspicious_keywords",
+    "tld_suspicious",
+    "has_at_symbol"
+  ],
+  "all_results": {
+    "LogisticRegression": {
+      "accuracy": 0.955,
+      "precision": 0.9691,
+      "recall": 0.94,
+      "f1_score": 0.9543,
+      "cv_mean_accuracy": 0.9646,
+      "cv_std": 0.0042
+    },
+    "DecisionTree": {
+      "accuracy": 0.9492,
+      "precision": 0.9655,
+      "recall": 0.9317,
+      "f1_score": 0.9483,
+      "cv_mean_accuracy": 0.9521,
+      "cv_std": 0.0045
+    },
+    "RandomForest": {
+      "accuracy": 0.9592,
+      "precision": 0.9693,
+      "recall": 0.9483,
+      "f1_score": 0.9587,
+      "cv_mean_accuracy": 0.9662,
+      "cv_std": 0.0048
+    },
+    "GradientBoosting(XGBoost-stand-in)": {
+      "accuracy": 0.9567,
+      "precision": 0.966,
+      "recall": 0.9467,
+      "f1_score": 0.9562,
+      "cv_mean_accuracy": 0.9642,
+      "cv_std": 0.0044
+    },
+    "RandomForest_Tuned": {
+      "accuracy": 0.9583,
+      "precision": 0.9693,
+      "recall": 0.9467,
+      "f1_score": 0.9578,
+      "cv_mean_accuracy": 0.9671,
+      "best_params": {
+        "max_depth": null,
+        "min_samples_split": 5,
+        "n_estimators": 200
+      }
+    }
+  },
+  "note": "Trained on a synthetically generated dataset mirroring real phishing-URL feature distributions, since this build environment had no internet access to fetch the live Kaggle dataset. Swap in the real CSV via Dataset/generate_dataset.py --from-csv for production.",
+  "xgboost_used": false
+}
