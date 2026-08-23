@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Change this if your Flask backend runs on a different host/port.
-export const API_BASE = 'https://qrshield-ai-1.onrender.com/api'
+export const API_BASE = 'https://qrshield-ai-2.onrender.com/api'
 
 const client = axios.create({
   baseURL: API_BASE,
