@@ -5,7 +5,7 @@ export const API_BASE = 'https://qrshield-ai-2.onrender.com/api'
 
 const client = axios.create({
   baseURL: API_BASE,
-  timeout: 15000,
+  timeout: 120000,
 })
 
 /** Analyze a manually-entered or already-decoded URL. */
