@@ -1,11 +1,12 @@
+
 import axios from 'axios'
 
-// Change this if your Flask backend runs on a different host/port.
-export const API_BASE = 'https://qrshield-ai-2.onrender.com/api'
+export const API_BASE =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'
 
 const client = axios.create({
   baseURL: API_BASE,
-  timeout: 15000,
+  timeout: 120000,
 })
 
 /** Analyze a manually-entered or already-decoded URL. */
@@ -39,4 +40,29 @@ export async function checkHealth() {
   return res.data
 }
 
+/** Explain why a URL was classified as safe or risky. */
+export async function explainUrl(url) {
+  const res = await client.post('/explain-url', { url })
+  return res.data
+}
+
+/** Check URL security details. */
+export async function analyzeSecurity(url) {
+  const res = await client.post('/analyze-security', { url })
+  return res.data
+}
+
+/** Analyze a suspicious SMS, email, or message. */
+export async function analyzeMessage(message) {
+  const res = await client.post('/analyze-message', { body: message })
+  return res.data
+}
+
+/** Check availability of advanced backend features. */
+export async function checkAdvancedStatus() {
+  const res = await client.get('/advanced/status')
+  return res.data
+}
+
 export default client
+
