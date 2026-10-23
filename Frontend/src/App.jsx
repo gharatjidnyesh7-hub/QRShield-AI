@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import ScanQR from './pages/ScanQR.jsx'
 import UploadQR from './pages/UploadQR.jsx'
 import PasteURL from './pages/PasteURL.jsx'
+import AnalyzeMessage from './pages/AnalyzeMessage.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import History from './pages/History.jsx'
 import About from './pages/About.jsx'
@@ -20,7 +21,7 @@ export default function App() {
     <div className="app-shell">
 
       <Navbar />
-
+     
       <Routes>
 
         {/* Public pages */}
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/scan" element={<ScanQR />} />
         <Route path="/upload" element={<UploadQR />} />
         <Route path="/paste" element={<PasteURL />} />
+        <Route path="/analyze-message" element={<AnalyzeMessage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 

@@ -30,6 +30,7 @@ import joblib
 import cv2
 from PIL import Image
 from flask import Flask, request, jsonify
+from advanced_routes import advanced_bp
 
 sys.path.append(os.path.dirname(__file__))
 from feature_extraction import (
@@ -43,6 +44,7 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "Models", "model.pkl"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 app = Flask(__name__)
+app.register_blueprint(advanced_bp)
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # 8 MB upload cap
 
 _model = None

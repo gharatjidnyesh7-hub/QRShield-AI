@@ -7,6 +7,7 @@ const LINKS = [
   { to: '/scan', label: 'Scan QR' },
   { to: '/upload', label: 'Upload QR' },
   { to: '/paste', label: 'Paste URL' },
+  { to: '/analyze-message', label: 'Message Scan' },
 ]
 
 export default function Navbar() {
